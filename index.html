@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Data Guardian — وزارة التعليم العالي والبحث العلمي</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -11,7 +11,7 @@
   #app{width:100%;max-width:680px;background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,0.1);overflow:hidden}
   .screen{display:none;padding:1.5rem}
   .screen.active{display:block}
-  .btn{background:transparent;border:1px solid rgba(0,0,0,0.2);border-radius:8px;padding:9px 18px;font-size:14px;font-weight:500;cursor:pointer;color:#1a1a1a;transition:background 0.15s,transform 0.1s;font-family:inherit}
+  .btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation;background:transparent;border:1px solid rgba(0,0,0,0.2);border-radius:8px;padding:9px 18px;font-size:14px;word-break:break-word;font-weight:500;cursor:pointer;color:#1a1a1a;transition:background 0.15s,transform 0.1s;font-family:inherit}
   .btn:hover{background:#f0f0eb}
   .btn:active{transform:scale(0.98)}
   .btn-purple{background:#AC833B;border-color:#AC833B;color:#fff}
@@ -22,12 +22,12 @@
   .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:500}
   .xpbar-wrap{background:#f0f0eb;border-radius:8px;height:7px;overflow:hidden;margin:5px 0}
   .xpbar-fill{height:100%;border-radius:8px;background:#AC833B;transition:width 0.6s ease}
-  .ans-btn{width:100%;text-align:left;padding:11px 15px;margin:5px 0;border:1px solid rgba(0,0,0,0.1);border-radius:8px;background:#fff;font-size:14px;cursor:pointer;color:#1a1a1a;transition:all 0.15s;font-family:inherit;line-height:1.5}
+  .ans-btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation;width:100%;text-align:left;padding:11px 15px;margin:5px 0;border:1px solid rgba(0,0,0,0.1);border-radius:8px;background:#fff;font-size:14px;cursor:pointer;color:#1a1a1a;transition:all 0.15s;font-family:inherit;line-height:1.5}
   .ans-btn:hover:not(:disabled){background:#f5f5f0;border-color:rgba(0,0,0,0.2)}
   .ans-btn.correct{background:#EAF3DE;border-color:#3B6D11;color:#173404}
   .ans-btn.wrong{background:#FCEBEB;border-color:#A32D2D;color:#501313}
   .ans-btn.reveal{background:#E6F1FB;border-color:#185FA5;color:#042C53}
-  .sc-opt{border:1px solid rgba(0,0,0,0.1);border-radius:8px;padding:13px;margin:7px 0;cursor:pointer;transition:all 0.15s;background:#fff;font-size:14px;color:#1a1a1a;width:100%;text-align:left;font-family:inherit;line-height:1.5}
+  .sc-opt{-webkit-tap-highlight-color:transparent;touch-action:manipulation;border:1px solid rgba(0,0,0,0.1);border-radius:8px;padding:13px;margin:7px 0;cursor:pointer;transition:all 0.15s;background:#fff;font-size:14px;color:#1a1a1a;width:100%;text-align:left;font-family:inherit;line-height:1.5}
   .sc-opt:hover:not(.locked){background:#f5f5f0}
   .sc-opt.good{border-color:#3B6D11;background:#EAF3DE;color:#173404}
   .sc-opt.bad{border-color:#A32D2D;background:#FCEBEB;color:#501313}
@@ -39,22 +39,25 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .rtl{direction:rtl;text-align:right}
   .rtl .ans-btn,.rtl .sc-opt{text-align:right}
-  .lang-btn{padding:6px 14px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:#1a1a1a;font-family:inherit;font-weight:500;transition:all 0.15s}
+  .lang-btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation;padding:6px 14px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:#1a1a1a;font-family:inherit;font-weight:500;transition:all 0.15s}
   .lang-btn.active{background:#FDF5E6;border-color:#AC833B;color:#7a5a20}
-
-  .mohesr-header{background:#fff;border-bottom:3px solid #AC833B;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .mohesr-logo-wrap{display:flex;align-items:center;gap:10px}
-  .mohesr-ministry-name{font-size:11px;font-weight:600;color:#AC833B;line-height:1.35;max-width:180px}
-  .mohesr-footer{background:#5E5E5E;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
-  .mohesr-footer-text{font-size:10px;color:rgba(255,255,255,0.7)}
-  .mohesr-color-bar{height:4px;display:flex}
-  .mohesr-color-bar span{flex:1}
-  @media(max-width:480px){body{padding:0}#app{border-radius:0;border:none;min-height:100vh}}
+  @media(max-width:600px){
+    body{padding:0;background:#fff}
+    #app{border-radius:0;border:none;min-height:100vh;max-width:100%}
+    .screen{padding:1rem}
+    .card{padding:1rem;border-radius:10px}
+    .ans-btn{padding:12px 14px;font-size:15px;margin:6px 0}
+    .sc-opt{padding:12px;font-size:15px;margin:6px 0}
+    .btn{padding:10px 16px;font-size:14px}
+    .btn-purple,.btn-amber{padding:13px 16px;font-size:15px}
+    .lang-btn{padding:8px 14px;font-size:14px}
+    .pill{font-size:11px;padding:4px 10px}
+    input[type=text]{padding:11px 12px;font-size:15px}
+  }
 </style>
 </head>
 <body>
-
-  <div class="mohesr-color-bar">
+ <div class="mohesr-color-bar">
     <span style="background:#AC833B"></span>
     <span style="background:#00823D"></span>
     <span style="background:#004BB9"></span>
@@ -70,6 +73,16 @@
 <div class="mohesr-footer">
     <div class="mohesr-footer-text">© Ministry of Higher Education & Scientific Research — UAE</div>
     <div class="mohesr-footer-text">وزارة التعليم العالي والبحث العلمي</div>
+  </div>
+</div>
+<div id="app">
+  <div id="s-home" class="screen active"></div>
+  <div id="s-diff" class="screen"></div>
+  <div id="s-quiz" class="screen"></div>
+  <div id="s-scenario" class="screen"></div>
+  <div id="s-result" class="screen"></div>
+  <div id="s-progress" class="screen"></div>
+  <div id="s-leaderboard" class="screen"></div>
   </div>
 </div>
 <script>
@@ -238,7 +251,7 @@ function langBar(){return `<div style="display:flex;gap:6px;margin-bottom:1.25re
 function renderHome(){
   const L=t(),xpL=G.xp%XPL;
   const mods=[{id:'classify',label:L.classify,sub:L.classifySub,col:'#534AB7',bg:'#EEEDFE',xp:G.difficulty==='beginner'?50:80},{id:'opendata',label:L.opendata,sub:L.opendataSub,col:'#0F6E56',bg:'#E1F5EE',xp:G.difficulty==='beginner'?50:80},{id:'scenario',label:L.scenario,sub:L.scenarioSub,col:'#854F0B',bg:'#FAEEDA',xp:G.difficulty==='beginner'?60:90}];
-  document.getElementById('s-home').innerHTML=`${langBar()}<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;gap:8px;flex-wrap:wrap"><div><div style="font-size:20px;font-weight:600;color:#1a1a1a">${L.appName}</div><div style="font-size:13px;color:#666">${L.level} ${G.level} &middot; ${G.xp} ${L.xp} &middot; ${G.badges.length} ${G.badges.length!==1?L.badges:L.badge}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showDiff()"><span class="pill" style="background:${G.difficulty==='beginner'?'#EAF3DE':'#FCEBEB'};color:${G.difficulty==='beginner'?'#27500A':'#791F1F'}">${G.difficulty==='beginner'?L.beginner:L.advanced}</span></button><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showProgress()">${L.progress}</button><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showLeaderboard()">${L.board}</button></div></div><div class="xpbar-wrap" style="margin-bottom:4px"><div class="xpbar-fill" style="width:${xpL}%"></div></div><div style="font-size:11px;color:#666;margin-bottom:1.25rem">${L.level} ${G.level} &mdash; ${xpL}/${XPL} ${L.toNextLevel}</div><div style="display:grid;gap:9px">${mods.map(m=>`<div class="card" style="cursor:pointer;display:flex;align-items:center;gap:14px;padding:1rem" onclick="${m.id==='scenario'?'startScenarios()':'startQuiz(\''+m.id+'\')'}"><div style="width:40px;height:40px;border-radius:8px;background:${m.bg};flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:500;color:#1a1a1a">${m.label}</div><div style="font-size:12px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.sub}</div></div><div style="display:flex;align-items:center;gap:8px;flex-shrink:0">${G.completed[m.id]?'<span style="color:#3B6D11;font-size:16px">&#10003;</span>':''}<span class="pill" style="background:${m.bg};color:${m.col}">+${m.xp} ${L.xp}</span></div></div>`).join('')}</div>`;
+  document.getElementById('s-home').innerHTML=`${langBar()}<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;gap:8px;flex-wrap:wrap;row-gap:10px"><div><div style="font-size:20px;font-weight:600;color:#1a1a1a">${L.appName}</div><div style="font-size:13px;color:#666">${L.level} ${G.level} &middot; ${G.xp} ${L.xp} &middot; ${G.badges.length} ${G.badges.length!==1?L.badges:L.badge}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showDiff()"><span class="pill" style="background:${G.difficulty==='beginner'?'#EAF3DE':'#FCEBEB'};color:${G.difficulty==='beginner'?'#27500A':'#791F1F'}">${G.difficulty==='beginner'?L.beginner:L.advanced}</span></button><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showProgress()">${L.progress}</button><button class="btn" style="padding:6px 10px;font-size:12px" onclick="showLeaderboard()">${L.board}</button></div></div><div class="xpbar-wrap" style="margin-bottom:4px"><div class="xpbar-fill" style="width:${xpL}%"></div></div><div style="font-size:11px;color:#666;margin-bottom:1.25rem">${L.level} ${G.level} &mdash; ${xpL}/${XPL} ${L.toNextLevel}</div><div style="display:grid;gap:9px">${mods.map(m=>`<div class="card" style="cursor:pointer;display:flex;align-items:center;gap:14px;padding:1rem" onclick="${m.id==='scenario'?'startScenarios()':'startQuiz(\''+m.id+'\')'}"><div style="width:40px;height:40px;border-radius:8px;background:${m.bg};flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-size:14px;word-break:break-word;font-weight:500;color:#1a1a1a">${m.label}</div><div style="font-size:12px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.sub}</div></div><div style="display:flex;align-items:center;gap:8px;flex-shrink:0">${G.completed[m.id]?'<span style="color:#3B6D11;font-size:16px">&#10003;</span>':''}<span class="pill" style="background:${m.bg};color:${m.col}">+${m.xp} ${L.xp}</span></div></div>`).join('')}</div>`;
   rtl('s-home');
 }
 
@@ -262,14 +275,14 @@ function pickAns(idx){
   document.querySelectorAll('.ans-btn').forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add('correct');else if(i===idx)b.classList.add('wrong');else b.classList.add('reveal');});
   if(ok){curScore++;addXP(10);}
   const fb=document.getElementById('fb');fb.style.display='block';
-  fb.innerHTML=`<div style="background:${ok?'#EAF3DE':'#FCEBEB'};border:1px solid ${ok?'#3B6D11':'#A32D2D'};border-radius:8px;padding:12px 14px"><div style="font-size:14px;font-weight:500;color:${ok?'#173404':'#501313'};margin-bottom:3px">${ok?L.correct:L.notQuite}</div><div style="font-size:13px;color:${ok?'#27500A':'#791F1F'};line-height:1.5">${q.exp}</div></div>`;
+  fb.innerHTML=`<div style="background:${ok?'#EAF3DE':'#FCEBEB'};border:1px solid ${ok?'#3B6D11':'#A32D2D'};border-radius:8px;padding:12px 14px"><div style="font-size:14px;word-break:break-word;font-weight:500;color:${ok?'#173404':'#501313'};margin-bottom:3px">${ok?L.correct:L.notQuite}</div><div style="font-size:13px;color:${ok?'#27500A':'#791F1F'};line-height:1.5">${q.exp}</div></div>`;
   document.getElementById('nxt').style.display='block';
 }
 function nextQ(){const total=QUESTIONS[curMod][G.difficulty][G.lang].length;if(curQ+1<total){curQ++;renderQ();}else showQuizResult();}
 function showQuizResult(){const total=QUESTIONS[curMod][G.difficulty][G.lang].length,pct=Math.round((curScore/total)*100),bid=curMod+'_'+G.difficulty,earned=pct>=60&&!G.badges.includes(bid);if(earned){G.badges.push(bid);addXP(20);}G.completed[curMod]=true;showResult(pct,curScore,total,earned,{classify:t().classify,opendata:t().opendata}[curMod],curMod,'startQuiz');}
 function showResult(pct,score,total,earned,label,mod,retryFn){
   const L=t();
-  document.getElementById('s-result').innerHTML=`<div style="text-align:center;padding:1rem 0"><div style="width:64px;height:64px;border-radius:50%;background:${pct>=60?'#EAF3DE':'#FCEBEB'};display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="${pct>=60?'#3B6D11':'#A32D2D'}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${pct>=60?'<polyline points="20 6 9 17 4 12"/>':'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'}</svg></div><div style="font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:6px">${pct>=80?L.excellent:pct>=60?L.wellDone:L.keepLearning}</div><div style="font-size:14px;color:#666;margin-bottom:1.5rem">${score} / ${total} (${pct}%)</div>${earned?`<div style="background:#FDF5E6;border-radius:12px;padding:1rem;margin-bottom:1.25rem;display:inline-block"><div style="font-size:22px;margin-bottom:4px">&#127885;</div><div style="font-size:14px;font-weight:500;color:#7a5a20">${label} ${L.badgeEarned}</div><div style="font-size:12px;color:#AC833B">${L.bonusXP}</div></div>`:''}<div style="display:flex;flex-direction:column;gap:8px"><button class="btn btn-purple" onclick="${retryFn}('${mod}')" style="width:100%">${L.tryAgain}</button><button class="btn" onclick="go('s-home');renderHome()" style="width:100%">${L.backMissions}</button></div></div>`;
+  document.getElementById('s-result').innerHTML=`<div style="text-align:center;padding:1rem 0"><div style="width:64px;height:64px;border-radius:50%;background:${pct>=60?'#EAF3DE':'#FCEBEB'};display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="${pct>=60?'#3B6D11':'#A32D2D'}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${pct>=60?'<polyline points="20 6 9 17 4 12"/>':'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'}</svg></div><div style="font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:6px">${pct>=80?L.excellent:pct>=60?L.wellDone:L.keepLearning}</div><div style="font-size:14px;color:#666;margin-bottom:1.5rem">${score} / ${total} (${pct}%)</div>${earned?`<div style="background:#FDF5E6;border-radius:12px;padding:1rem;margin-bottom:1.25rem;display:inline-block"><div style="font-size:22px;margin-bottom:4px">&#127885;</div><div style="font-size:14px;word-break:break-word;font-weight:500;color:#7a5a20">${label} ${L.badgeEarned}</div><div style="font-size:12px;color:#AC833B">${L.bonusXP}</div></div>`:''}<div style="display:flex;flex-direction:column;gap:8px"><button class="btn btn-purple" onclick="${retryFn}('${mod}')" style="width:100%">${L.tryAgain}</button><button class="btn" onclick="go('s-home');renderHome()" style="width:100%">${L.backMissions}</button></div></div>`;
   rtl('s-result');go('s-result');
 }
 function startScenarios(){scList=SCENARIOS[G.difficulty][G.lang];curScenIdx=0;scScore=0;renderScenario();go('s-scenario');}
@@ -278,7 +291,7 @@ function renderScenario(){
   document.getElementById('s-scenario').innerHTML=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem"><button class="btn" onclick="go('s-home');renderHome()" style="padding:6px 12px;font-size:13px">${L.back}</button><div style="flex:1"><div style="font-size:12px;color:#666">${L.scenario} &middot; <span class="pill" style="background:${G.difficulty==='beginner'?'#FAEEDA':'#FCEBEB'};color:${G.difficulty==='beginner'?'#633806':'#791F1F'}">${G.difficulty==='beginner'?L.beginner:L.advanced}</span></div><div class="xpbar-wrap" style="margin:4px 0 0"><div class="xpbar-fill" style="width:${(curScenIdx/scList.length)*100}%;background:#854F0B"></div></div></div><span style="font-size:13px;color:#666">${curScenIdx+1}/${scList.length}</span></div><div class="card" style="margin-bottom:1rem"><span class="pill" style="background:#FAEEDA;color:#633806;margin-bottom:8px;display:inline-block">${L.scenario_label} ${curScenIdx+1}</span><div style="font-size:15px;font-weight:500;color:#1a1a1a;margin-bottom:8px">${sc.title}</div><div style="font-size:14px;color:#555;line-height:1.6">${sc.story}</div></div><div id="sc-opts">${sc.opts.map((o,i)=>`<button class="sc-opt" id="sco${i}" onclick="pickScen(${i})">${o.t}</button>`).join('')}</div><div id="sc-fb" style="display:none;margin-top:1rem"></div><div id="sc-nxt" style="margin-top:1rem;display:none"><button class="btn btn-amber" onclick="nextScen()" style="width:100%">${curScenIdx+1<scList.length?L.nextScen:L.results}</button></div>`;
   rtl('s-scenario');
 }
-function pickScen(idx){const L=t(),sc=scList[curScenIdx],o=sc.opts[idx];document.querySelectorAll('.sc-opt').forEach(b=>b.classList.add('locked'));document.getElementById('sco'+idx).classList.add(o.good?'good':'bad');if(o.good){scScore++;addXP(15);}const fb=document.getElementById('sc-fb');fb.style.display='block';fb.innerHTML=`<div style="background:${o.good?'#EAF3DE':'#FCEBEB'};border:1px solid ${o.good?'#3B6D11':'#A32D2D'};border-radius:8px;padding:12px 14px"><div style="font-size:14px;font-weight:500;color:${o.good?'#173404':'#501313'};margin-bottom:3px">${o.good?L.goodCall:L.thinkAgain}</div><div style="font-size:13px;color:${o.good?'#27500A':'#791F1F'};line-height:1.5">${o.fb}</div></div>`;document.getElementById('sc-nxt').style.display='block';}
+function pickScen(idx){const L=t(),sc=scList[curScenIdx],o=sc.opts[idx];document.querySelectorAll('.sc-opt').forEach(b=>b.classList.add('locked'));document.getElementById('sco'+idx).classList.add(o.good?'good':'bad');if(o.good){scScore++;addXP(15);}const fb=document.getElementById('sc-fb');fb.style.display='block';fb.innerHTML=`<div style="background:${o.good?'#EAF3DE':'#FCEBEB'};border:1px solid ${o.good?'#3B6D11':'#A32D2D'};border-radius:8px;padding:12px 14px"><div style="font-size:14px;word-break:break-word;font-weight:500;color:${o.good?'#173404':'#501313'};margin-bottom:3px">${o.good?L.goodCall:L.thinkAgain}</div><div style="font-size:13px;color:${o.good?'#27500A':'#791F1F'};line-height:1.5">${o.fb}</div></div>`;document.getElementById('sc-nxt').style.display='block';}
 function nextScen(){if(curScenIdx+1<scList.length){curScenIdx++;renderScenario();}else{const pct=Math.round((scScore/scList.length)*100),bid='scenario_'+G.difficulty,earned=pct>=60&&!G.badges.includes(bid);if(earned){G.badges.push(bid);addXP(20);}G.completed.scenario=true;showResult(pct,scScore,scList.length,earned,t().scenario,'scenario','startScenarios');}}
 function showProgress(){
   const L=t(),xpL=G.xp%XPL,allDone=Object.values(G.completed).every(Boolean)&&G.badges.length>=3;
@@ -290,7 +303,7 @@ function showLeaderboard(){
   const L=t(),youLabel=G.lang==='ar'?' (\u0623\u0646\u062a)':' (you)',myEntry=G.playerName?{name:G.playerName+youLabel,xp:G.xp,level:G.level,badges:G.badges.length,me:true}:null;
   let board=[...G.scores];if(myEntry)board.push(myEntry);board.sort((a,b)=>b.xp-a.xp);
   const medals=['&#129351;','&#129352;','&#129353;'];
-  document.getElementById('s-leaderboard').innerHTML=`${langBar()}<div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem"><button class="btn" onclick="go('s-home');renderHome()" style="padding:6px 12px;font-size:13px">${L.back}</button><div style="font-size:16px;font-weight:500;color:#1a1a1a">${L.leaderboard}</div></div>${!G.playerName?`<div class="card" style="margin-bottom:1rem"><div style="font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:8px">${L.joinBoard}</div><div style="display:flex;gap:8px"><input type="text" id="pname" placeholder="${L.yourName}" style="flex:1"><button class="btn btn-purple" onclick="joinBoard()">${L.join}</button></div></div>`:`<div style="font-size:13px;color:#666;margin-bottom:1rem">${L.playingAs} <strong style="color:#1a1a1a">${G.playerName}</strong></div>`}<div class="card">${board.map((p,i)=>`<div class="lb-row" style="${p.me?'background:#f5f5f0;border-radius:8px;padding:9px 8px;':''}"><div style="width:24px;text-align:center;font-size:15px">${i<3?medals[i]:`<span style="font-size:13px;color:#888">${i+1}</span>`}</div><div style="flex:1"><div style="font-size:14px;font-weight:${p.me?'600':'400'};color:#1a1a1a">${p.name}</div><div style="font-size:11px;color:#666">${L.level} ${p.level} &middot; ${p.badges} ${p.badges!==1?L.badges:L.badge}</div></div><div style="font-size:15px;font-weight:500;color:#AC833B">${p.xp} ${L.xp}</div></div>`).join('')}</div>`;
+  document.getElementById('s-leaderboard').innerHTML=`${langBar()}<div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem"><button class="btn" onclick="go('s-home');renderHome()" style="padding:6px 12px;font-size:13px">${L.back}</button><div style="font-size:16px;font-weight:500;color:#1a1a1a">${L.leaderboard}</div></div>${!G.playerName?`<div class="card" style="margin-bottom:1rem"><div style="font-size:14px;word-break:break-word;font-weight:500;color:#1a1a1a;margin-bottom:8px">${L.joinBoard}</div><div style="display:flex;gap:8px"><input type="text" id="pname" placeholder="${L.yourName}" style="flex:1"><button class="btn btn-purple" onclick="joinBoard()">${L.join}</button></div></div>`:`<div style="font-size:13px;color:#666;margin-bottom:1rem">${L.playingAs} <strong style="color:#1a1a1a">${G.playerName}</strong></div>`}<div class="card">${board.map((p,i)=>`<div class="lb-row" style="${p.me?'background:#f5f5f0;border-radius:8px;padding:9px 8px;':''}"><div style="width:24px;text-align:center;font-size:15px">${i<3?medals[i]:`<span style="font-size:13px;color:#888">${i+1}</span>`}</div><div style="flex:1"><div style="font-size:14px;word-break:break-word;font-weight:${p.me?'600':'400'};color:#1a1a1a">${p.name}</div><div style="font-size:11px;color:#666">${L.level} ${p.level} &middot; ${p.badges} ${p.badges!==1?L.badges:L.badge}</div></div><div style="font-size:15px;font-weight:500;color:#AC833B">${p.xp} ${L.xp}</div></div>`).join('')}</div>`;
   rtl('s-leaderboard');go('s-leaderboard');
 }
 function joinBoard(){const n=document.getElementById('pname').value.trim();if(!n)return;G.playerName=n;showLeaderboard();}
