@@ -41,6 +41,10 @@
   .rtl .ans-btn,.rtl .sc-opt{text-align:right}
   .lang-btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation;padding:6px 14px;border:1px solid rgba(0,0,0,0.15);border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:#1a1a1a;font-family:inherit;font-weight:500;transition:all 0.15s}
   .lang-btn.active{background:#FDF5E6;border-color:#AC833B;color:#7a5a20}
+  .mohesr-color-bar{height:5px;display:flex}
+  .mohesr-color-bar span{flex:1}
+  .mohesr-footer{background:#5E5E5E;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+  .mohesr-footer-text{font-size:11px;color:rgba(255,255,255,0.8)}
   @media(max-width:600px){
     body{padding:0;background:#fff}
     #app{border-radius:0;border:none;min-height:100vh;max-width:100%}
@@ -57,7 +61,8 @@
 </style>
 </head>
 <body>
- <div class="mohesr-color-bar">
+<div id="app">
+  <div class="mohesr-color-bar">
     <span style="background:#AC833B"></span>
     <span style="background:#00823D"></span>
     <span style="background:#004BB9"></span>
@@ -70,19 +75,9 @@
   <div id="s-result" class="screen"></div>
   <div id="s-progress" class="screen"></div>
   <div id="s-leaderboard" class="screen"></div>
-<div class="mohesr-footer">
-    <div class="mohesr-footer-text">© Ministry of Higher Education & Scientific Research — UAE</div>
+  <div class="mohesr-footer">
+    <div class="mohesr-footer-text">© Ministry of Higher Education &amp; Scientific Research — UAE</div>
     <div class="mohesr-footer-text">وزارة التعليم العالي والبحث العلمي</div>
-  </div>
-</div>
-<div id="app">
-  <div id="s-home" class="screen active"></div>
-  <div id="s-diff" class="screen"></div>
-  <div id="s-quiz" class="screen"></div>
-  <div id="s-scenario" class="screen"></div>
-  <div id="s-result" class="screen"></div>
-  <div id="s-progress" class="screen"></div>
-  <div id="s-leaderboard" class="screen"></div>
   </div>
 </div>
 <script>
